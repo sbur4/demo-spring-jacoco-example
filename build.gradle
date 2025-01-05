@@ -74,24 +74,44 @@ jacocoTestReport {
     }
 }
 
+//jacocoTestCoverageVerification {
+//    violationRules {
+//        rule {
+//            limit {
+//                counter = 'COMPLEXITY'
+//                value = 'COVEREDRATIO'
+//                minimum = 0.44
+//            }
+//            limit {
+//                counter = 'LINE'
+//                value = 'TOTALCOUNT'
+//                minimum = 0.99
+//            }
+//            limit {
+//                counter = 'BRANCH'
+//                value = 'COVEREDRATIO'
+//                minimum = 0.17
+//            }
+//        }
+//    }
+//}
+
 jacocoTestCoverageVerification {
     violationRules {
         rule {
+            element = 'CLASS'
             limit {
-                counter = 'COMPLEXITY'
+                counter = 'METHOD'
                 value = 'COVEREDRATIO'
-                minimum = 0.44
+                minimum = 0.7
             }
-            limit {
-                counter = 'LINE'
-                value = 'TOTALCOUNT'
-                minimum = 0.99
-            }
-            limit {
-                counter = 'BRANCH'
-                value = 'COVEREDRATIO'
-                minimum = 0.17
-            }
+            includes = [
+                    "org.example.*.service.*",
+                    "org.example.*.mapper.*"
+            ]
+            excludes = [
+                    "org.example.*.healthcheck.*"
+            ]
         }
     }
 }
